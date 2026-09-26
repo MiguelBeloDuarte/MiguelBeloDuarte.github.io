@@ -6,3 +6,33 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.fotografias {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.fotografias img {
+  width: 150px;
+  border-radius: 20px;
+}
+
+.poema {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 20px 40px;
+  border-radius: 20px;
+  background-color: #96aeca;
+  color: black;
+  text-align: center;
+}
+
+.poema p {
+  margin: 4px 0;
+}
+
+.poema p:nth-child(4n) {
+  margin-bottom: 20px;
+}
