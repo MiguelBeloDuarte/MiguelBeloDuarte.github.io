@@ -1,4 +1,5 @@
-/* HOME
+/* ---------- home ---------- */
+
 /* página: fundo cinzento claro, sem margens do browser */
 body {
   margin: 0;
@@ -60,8 +61,8 @@ footer {
   padding: 10px 0;
 }
 
+/* ---------- multimédia ---------- */
 
-/* MULTIMÉDIA
 /* galeria em linha que quebra conforme a largura do ecrã */
 .fotografias {
   display: flex;
@@ -77,8 +78,13 @@ footer {
   border-radius: 20px;
 }
 
+/* mapa e vídeo sem borda */
+iframe {
+  border: 0;
+}
 
-/* INFORMAÇÃO
+/* ---------- informação ---------- */
+
 /* tabela com bordas separadas, como no exemplo */
 table {
   border: 1px solid #999;

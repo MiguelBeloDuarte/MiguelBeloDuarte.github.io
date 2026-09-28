@@ -1,54 +1,57 @@
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    background-color: rgb(50, 85, 151);
-    border-bottom: 1px solid black;
-    color: white;
-}
-
-main {
-    min-height: 580px;
-    padding: 8px;
-    background-color: rgb(209, 45, 45);
-    border-right: 1px solid black;
-    color: white;
-}
-
-section {
-    margin-bottom: 8px;
-    padding: 0 8px 8px;
-    background-color: rgb(241, 72, 72);
-    border: 1px solid black;
-}
-
-aside {
-    padding: 8px;
-    background-color: green;
-    color: white;
-}
-
-footer {
-    padding: 20px 8px;
-    background-color: rgb(32, 155, 32);
-    color: black;
-    border-top: 1px solid black;
-}
-
-header {grid-area: h;}
-main {grid-area: m;}
-aside {grid-area: a;}
-footer {grid-area: f;}
-
+/* página em grelha: cabeçalho, conteúdo + lateral, rodapé */
 body {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-        "h h"
-        "m a"
-        "f f";
-    border: 2px solid black;
-    color: white
+  display: grid;
+  grid-template:
+    "h h" auto
+    "m a" 1fr
+    "f f" auto / 2fr 1fr;
+  border: 2px solid black;
+  color: white;
+}
+
+/* cabeçalho: título à esquerda, subtítulo à direita */
+header {
+  grid-area: h;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  background-color: rgb(50 85 151);
+  border-bottom: 1px solid black;
+  color: white;
+}
+
+/* coluna principal */
+main {
+  grid-area: m;
+  min-height: 580px;
+  padding: 8px;
+  background-color: rgb(209 45 45);
+  border-right: 1px solid black;
+  color: white;
+}
+
+/* caixas dentro do main */
+section {
+  margin-bottom: 8px;
+  padding: 0 8px 8px;
+  background-color: rgb(241 72 72);
+  border: 1px solid black;
+}
+
+/* coluna lateral */
+aside {
+  grid-area: a;
+  padding: 8px;
+  background-color: green;
+  color: white;
+}
+
+/* rodapé */
+footer {
+  grid-area: f;
+  padding: 20px 8px;
+  background-color: rgb(32 155 32);
+  color: black;
+  border-top: 1px solid black;
 }
