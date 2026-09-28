@@ -7,6 +7,9 @@
 
 /* página: fundo cinzento claro, sem margens do browser */
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   margin: 0;
   background-color: #f2f2f2;
   font-family: Arial, Helvetica, sans-serif;
@@ -73,7 +76,8 @@ nav a[href="info.html"]::before {
 body > img {
   display: block;
   width: 100%;
-  height: 250px;
+  height: 50vh;
+  min-height: 250px;
   object-fit: cover;
   margin-top: 10px;
 }
@@ -87,6 +91,7 @@ main {
 
 /* rodapé escuro */
 footer {
+  margin-top: auto; /* rodapé sempre no fundo, mesmo em páginas curtas */
   background-color: #1a1a1a;
   color: white;
   text-align: center;
@@ -98,7 +103,6 @@ footer {
 /* PC: texto ao lado do mapa */
 .localizacao {
   display: flex;
-  align-items: flex-start;
   gap: 40px;
 }
 
@@ -106,14 +110,23 @@ footer {
   flex: 1;
 }
 
+/* texto começa encostado ao topo, à mesma altura do mapa */
+.local-texto > :first-child {
+  margin-top: 0;
+}
+
+/* coluna do mapa com a mesma altura da coluna do texto */
 .local-mapa {
+  display: flex;
   flex: 2;
+  flex-direction: column;
 }
 
 .local-mapa iframe {
   display: block;
+  flex: 1;
   width: 100%;
-  height: 400px;
+  min-height: 350px;
   border: 0;
 }
 
@@ -329,23 +342,21 @@ td {
 
 /* ---------- informação: grelha ---------- */
 
-/* 4 colunas; cada "." é uma célula vazia (espaço em branco) */
+/* 4 colunas: cada foto ocupa 2 células, sem espaços desaproveitados */
 .info-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: minmax(180px, auto);
   grid-template-areas:
-    "intro  intro  .      foto1"
-    "tabela tabela foto2  foto1"
-    "foto3  curios curios ."
-    ".      curios curios foto4";
+    "intro  intro  foto1  foto1"
+    "tabela tabela foto2  foto2"
+    "foto3  curios curios foto4"
+    "foto3  curios curios foto4";
   gap: 20px;
 }
 
 /* cada elemento vai para a sua área da grelha */
 .info-intro {
   grid-area: intro;
-  align-self: end;
 }
 
 .info-tabela {
@@ -373,9 +384,11 @@ td {
   grid-area: foto4;
 }
 
-/* imagens preenchem a célula sem deformar */
+/* imagens preenchem a célula sem deformar; o contain faz com que a altura
+   da linha venha do texto e a foto seja recortada para caber */
 .info-foto {
   display: block;
+  contain: size;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -473,6 +486,8 @@ td {
   }
 
   .local-mapa iframe {
+    flex: none;
+    min-height: 0;
     height: 300px;
   }
 
