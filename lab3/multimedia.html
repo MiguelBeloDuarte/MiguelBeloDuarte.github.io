@@ -20,33 +20,57 @@
       <h2>Multimédia</h2>
       <p>Nesta página encontra conteúdos multimédia.</p>
 
-      <nav>
-        <a href="#fotografias">Fotografias</a> | <a href="#video">Vídeo</a> |
+      <!-- links âncora para cada secção -->
+      <p class="ancoras">
+        <a href="#fotografias">Fotografias</a> |
+        <a href="#destaque">Destaque</a> |
+        <a href="#video-fundo">Tóquio em movimento</a> |
+        <a href="#video">Vídeo</a> | <a href="#parallax">Vista de cima</a> |
         <a href="#poesia">Poesia</a>
-      </nav>
+      </p>
 
-      <section>
+      <section class="bloco fotos">
         <h3 id="fotografias">Fotografias</h3>
         <div class="fotografias">
-          <img src="images/t1.jpg" alt="vista cidade" />
+          <img src="images/t1.jpg" alt="Vista da cidade" />
           <img src="images/t2.jpg" alt="Shinjuku" />
           <img src="images/t3.jpg" alt="Tokyo Tower" />
-          <img src="images/t4.jpg" alt="Shibuya crossing" />
+          <img src="images/t4.jpg" alt="Cruzamento de Shibuya" />
           <img src="images/t5.jpg" alt="Tokyo Skytree" />
-          <img src="images/t6.jpg" alt="Imperial Palace Gardens" />
-          <img src="images/t7.jpg" alt="Sumida river" />
-          <img src="images/t8.jpg" alt="Yoyogi park" />
+          <img src="images/t6.jpg" alt="Jardins do Palácio Imperial" />
+          <img src="images/t7.jpg" alt="Rio Sumida" />
+          <img src="images/t8.jpg" alt="Parque Yoyogi" />
         </div>
       </section>
 
-      <section>
+      <!-- fotografia a toda a largura com frase posicionada por cima -->
+      <section class="bloco destaque">
+        <h3 id="destaque">Destaque</h3>
+        <div class="destaque-imagem">
+          <img src="images/street.jpg" alt="Rua em Tokyo" />
+          <p class="frase">Onde o antigo e o futuro partilham a mesma rua.</p>
+        </div>
+      </section>
+
+      <!-- vídeo em loop como fundo da secção -->
+      <section class="bloco video-fundo">
+        <!-- [html-validate-disable-next no-autoplay -- vídeo decorativo, sem som] -->
+        <video class="video-fundo-media" autoplay muted loop playsinline>
+          <source src="videos/tokyomove.mp4" type="video/mp4" />
+        </video>
+        <div class="video-fundo-texto">
+          <h3 id="video-fundo">Tóquio em movimento</h3>
+          <p>Uma cidade que nunca para, de dia e de noite.</p>
+        </div>
+      </section>
+
+      <section class="bloco video">
         <h3 id="video">Vídeo</h3>
         <iframe
           width="560"
           height="315"
           src="https://www.youtube.com/embed/I_qaccjrirc?si=1SoVQAvg9kWxRZ13"
-          title="YouTube video player"
-          frameborder="0"
+          title="Vídeo sobre Tóquio"
           allow="
             accelerometer;
             autoplay;
@@ -61,7 +85,13 @@
         ></iframe>
       </section>
 
-      <section class="poesia">
+      <!-- imagem fixa enquanto a página desliza por cima -->
+      <section class="bloco parallax">
+        <h3 id="parallax">Vista de cima</h3>
+        <p class="parallax-texto">Mais de 2000 km² de cidade.</p>
+      </section>
+
+      <section class="bloco poesia">
         <h3 id="poesia">Poesia</h3>
         <div class="poema">
           <p>Sob o néon que acorda a madrugada,</p>

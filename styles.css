@@ -65,7 +65,7 @@ section {
       rgba(15, 22, 40, 0.45) 55%,
       rgba(15, 22, 40, 0) 100%
     ),
-    url("images/hero.jpg");
+    url("../images/web.jpg");
   background-size: cover;
   background-position: center;
 }

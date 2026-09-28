@@ -1,4 +1,10 @@
-/* HOME
+/* ---------- base ---------- */
+
+/* para boa responsividade: padding e border contam dentro da largura */
+* {
+  box-sizing: border-box;
+}
+
 /* página: fundo cinzento claro, sem margens do browser */
 body {
   margin: 0;
@@ -18,23 +24,50 @@ h1 {
   color: white;
 }
 
-/* barra de navegação escura */
+/* ---------- menu ---------- */
+
 nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 10px 0;
   background-color: #1a1a1a;
-  text-align: center;
-  padding: 8px 0;
 }
 
 nav a {
-  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
   color: white;
   text-decoration: none;
   font-size: 0.85em;
+  transition: border-color 0.3s;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  border-bottom-color: #bc002d;
 }
+
+/* ícone de cada página, escolhido pelo href (sem alterar o HTML) */
+nav a[href="index.html"]::before {
+  content: "🏠";
+}
+
+nav a[href="local.html"]::before {
+  content: "📍";
+}
+
+nav a[href="multimedia.html"]::before {
+  content: "📷";
+}
+
+nav a[href="info.html"]::before {
+  content: "📊";
+}
+
+/* ---------- home ---------- */
 
 /* imagem de destaque (só a que está diretamente no body) */
 body > img {
@@ -60,25 +93,216 @@ footer {
   padding: 10px 0;
 }
 
+/* ---------- localização ---------- */
 
-/* MULTIMÉDIA
-/* galeria em linha que quebra conforme a largura do ecrã */
+/* PC: texto ao lado do mapa */
+.localizacao {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.local-texto {
+  flex: 1;
+}
+
+.local-mapa {
+  flex: 2;
+}
+
+.local-mapa iframe {
+  display: block;
+  width: 100%;
+  height: 400px;
+  border: 0;
+}
+
+/* ---------- multimédia: secções ---------- */
+
+/* cada secção ocupa o ecrã inteiro, com título e conteúdo centrados */
+/* cada secção com espaço à volta, título e conteúdo centrados */
+.bloco {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* só as secções imersivas ocupam o ecrã inteiro */
+.video-fundo,
+.parallax {
+  min-height: 100vh;
+}
+
+.bloco h3 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+/* cor de fundo diferente em cada secção */
+.fotos {
+  background-color: #fbe3ea;
+}
+
+.destaque {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.video {
+  background-color: #1a1a2e;
+  color: white;
+}
+
+.poesia {
+  background-color: #e4e8f1;
+}
+
+.video iframe {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+/* ---------- multimédia: fotografias ---------- */
+
+/* galeria centrada que quebra conforme a largura (4 por linha no desktop) */
 .fotografias {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
+  max-width: 780px;
 }
 
-/* fotografias com cantos arredondados */
+/* fotografias a cinzento que ganham cor e crescem ao passar o rato */
 .fotografias img {
   width: 180px;
   height: 120px;
   object-fit: cover;
   border-radius: 20px;
+  filter: grayscale(70%);
+  transition:
+    transform 0.3s ease-in-out,
+    filter 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
 }
 
+.fotografias img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
 
-/* INFORMAÇÃO
+/* ---------- multimédia: fotografia de destaque ---------- */
+
+/* contentor relativo: a frase posiciona-se em relação a ele */
+.destaque-imagem {
+  position: relative;
+  width: 100%;
+}
+
+.destaque-imagem img {
+  display: block;
+  width: 100%;
+}
+
+/* frase sobre a imagem, com tamanho em vw para acompanhar a janela */
+.frase {
+  position: absolute;
+  left: 5%;
+  bottom: 10%;
+  margin: 0;
+  max-width: 60%;
+  font-size: 4vw;
+  font-weight: bold;
+  line-height: 1.1;
+  text-align: left;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* ---------- multimédia: vídeo de fundo ---------- */
+
+/* contentor relativo: o vídeo fica por trás, preso às margens da secção */
+.video-fundo {
+  position: relative;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+/* vídeo cobre a secção inteira, ligeiramente escurecido */
+.video-fundo-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75);
+}
+
+/* título e subtítulo centrados, com sombra para se lerem sobre o vídeo */
+.video-fundo-texto {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.video-fundo-texto p {
+  margin: 8px 0 0;
+  font-size: 1rem;
+}
+
+/* ---------- multimédia: parallax ---------- */
+
+/* a imagem fica parada enquanto o conteúdo desliza por cima */
+.parallax {
+  background-image: url("images/tokyo_skyview.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.parallax-texto {
+  margin: 0;
+  font-size: 5vw;
+  font-weight: bold;
+}
+
+/* ---------- multimédia: poema ---------- */
+
+/* caixa acinzentada com o poema centrado */
+.poema {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 20px 40px;
+  background-color: #bcc4ce;
+  color: black;
+  text-align: center;
+}
+
+.poema p {
+  margin: 4px 0;
+}
+
+/* separa as estrofes a cada 4 versos (:nth-child pedido no enunciado) */
+.poema p:nth-child(4n) {
+  margin-bottom: 20px;
+}
+
+/* último verso sem margem extra */
+.poema p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- informação: tabela ---------- */
+
 /* tabela com bordas separadas, como no exemplo */
 table {
   border: 1px solid #999;
@@ -101,4 +325,176 @@ th {
 /* dados */
 td {
   color: #444;
+}
+
+/* ---------- informação: grelha ---------- */
+
+/* 4 colunas; cada "." é uma célula vazia (espaço em branco) */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  grid-template-areas:
+    "intro  intro  .      foto1"
+    "tabela tabela foto2  foto1"
+    "foto3  curios curios ."
+    ".      curios curios foto4";
+  gap: 20px;
+}
+
+/* cada elemento vai para a sua área da grelha */
+.info-intro {
+  grid-area: intro;
+  align-self: end;
+}
+
+.info-tabela {
+  grid-area: tabela;
+}
+
+.info-curiosidades {
+  grid-area: curios;
+  align-self: center;
+}
+
+.foto1 {
+  grid-area: foto1;
+}
+
+.foto2 {
+  grid-area: foto2;
+}
+
+.foto3 {
+  grid-area: foto3;
+}
+
+.foto4 {
+  grid-area: foto4;
+}
+
+/* imagens preenchem a célula sem deformar */
+.info-foto {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.info-intro h2,
+.info-tabela h3,
+.info-curiosidades h3 {
+  margin-top: 0;
+}
+
+/* ---------- acessibilidade: menos movimento ---------- */
+
+/* sem animações, vídeo nem parallax para quem os desativou no sistema */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+
+  .video-fundo-media {
+    display: none;
+  }
+
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+
+/* ---------- telemóvel (sempre no fim do ficheiro) ---------- */
+
+@media (max-width: 600px) {
+  /* menu vira barra de separadores fixa no fundo */
+  nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    gap: 0;
+    padding: 6px 0;
+    border-top: 3px solid #bc002d;
+  }
+
+  /* cada link ocupa a mesma largura, ícone por cima do texto */
+  nav a {
+    flex: 1;
+    flex-direction: column;
+    gap: 2px;
+    border-bottom: none;
+    font-size: 0.7em;
+  }
+
+  nav a::before {
+    font-size: 1.5em;
+  }
+
+  /* espaço no fundo para a barra não tapar o rodapé */
+  body {
+    padding-bottom: 64px;
+  }
+
+  h1 {
+    padding: 20px 0;
+    font-size: 1.6em;
+  }
+
+  main {
+    margin: 10px 6px;
+    padding: 10px;
+  }
+
+  /* vídeo e tabela não podem sair do ecrã */
+  iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  /* texto por cima do mapa */
+  .localizacao {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .local-texto,
+  .local-mapa {
+    flex: none;
+  }
+
+  .local-mapa iframe {
+    height: 300px;
+  }
+
+  /* o iPhone não suporta background fixo: sem parallax no telemóvel */
+  .parallax {
+    background-attachment: scroll;
+  }
+
+  /* grelha de 2 colunas, sem células vazias */
+  .info-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    grid-template-areas:
+      "intro  intro"
+      "foto1  foto2"
+      "tabela tabela"
+      "curios curios"
+      "foto3  foto4";
+    gap: 12px;
+  }
+
+  .info-foto {
+    height: 140px;
+  }
 }

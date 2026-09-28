@@ -17,67 +17,96 @@
       </nav>
     </header>
     <main>
-      <h2>Informação</h2>
-      <p>
-        Conheça alguma das principais zonas e atrações de Tóquio, e algumas
-        curiosidades sobre a cidade.
-      </p>
+      <!-- grelha 2D: cada elemento tem uma área própria e há células vazias -->
+      <div class="info-grid">
+        <div class="info-intro">
+          <h2>Informação</h2>
+          <p>Alguns dados sobre Tóquio, curiosidades e imagens da cidade.</p>
+        </div>
 
-      <section>
-        <h3>Zonas e atrações</h3>
-        <table>
-          <tr>
-            <th rowspan="2">Demografia</th>
-            <td>População</td>
-            <td>≈ 14 milhões hab</td>
-          </tr>
-          <tr>
-            <td>densidade populacional</td>
-            <td>≈ 6400 hab/km<sup>2</sup></td>
-          </tr>
-          <tr>
-            <th rowspan="3">Geografia</th>
-            <td>Área</td>
-            <td>2194 km<sup>2</sup></td>
-          </tr>
-          <tr>
-            <td>Região</td>
-            <td>Kantō</td>
-          </tr>
-          <tr>
-            <td>País</td>
-            <td>Japão</td>
-          </tr>
-          <tr>
-            <th>Website</th>
-            <td colspan="2">
-              <a href="https://www.metro.tokyo.lg.jp">www.metro.tokyo.lg.jp</a>
-            </td>
-          </tr>
-        </table>
-      </section>
+        <img
+          class="info-foto foto1"
+          src="images/shinjuku.jpg"
+          alt="Rua de Shinjuku iluminada por néons à noite"
+        />
+        <img
+          class="info-foto foto2"
+          src="images/senso_ji.jpg"
+          alt="Templo Sensō-ji em Asakusa"
+        />
 
-      <section>
-        <h3>Curiosidades</h3>
-        <ol>
-          <li>Até 1868, Tóquio chamava-se Edo.</li>
-          <li>
-            A estação de Shinjuku é a mais movimentada do mundo, com milhões de
-            passageiros por dia.
-          </li>
-          <li>
-            A Tokyo Tower foi inspirada na Torre Eiffel e tem 333 metros de
-            altura.
-          </li>
-          <li>
-            A Tokyo Skytree, com 634 metros, é a torre mais alta do mundo.
-          </li>
-          <li>
-            Tóquio acolheu os Jogos Olímpicos de Verão duas vezes, em 1964 e em
-            2021.
-          </li>
-        </ol>
-      </section>
+        <section class="info-tabela">
+          <h3>Dados da cidade</h3>
+          <table>
+            <tbody>
+              <tr>
+                <th rowspan="2" scope="rowgroup">Demografia</th>
+                <td>População</td>
+                <td>≈ 14 milhões hab</td>
+              </tr>
+              <tr>
+                <td>densidade populacional</td>
+                <td>≈ 6400 hab/km<sup>2</sup></td>
+              </tr>
+              <tr>
+                <th rowspan="3" scope="rowgroup">Geografia</th>
+                <td>Área</td>
+                <td>2194 km<sup>2</sup></td>
+              </tr>
+              <tr>
+                <td>Região</td>
+                <td>Kantō</td>
+              </tr>
+              <tr>
+                <td>País</td>
+                <td>Japão</td>
+              </tr>
+              <tr>
+                <th scope="row">Website</th>
+                <td colspan="2">
+                  <a href="https://www.metro.tokyo.lg.jp"
+                    >www.metro.tokyo.lg.jp</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <img
+          class="info-foto foto3"
+          src="images/sakura.jpg"
+          alt="Cerejeiras em flor junto a um rio"
+        />
+
+        <section class="info-curiosidades">
+          <h3>Curiosidades</h3>
+          <ol>
+            <li>Até 1868, Tóquio chamava-se Edo.</li>
+            <li>
+              A estação de Shinjuku é a mais movimentada do mundo, com milhões
+              de passageiros por dia.
+            </li>
+            <li>
+              A Tokyo Tower foi inspirada na Torre Eiffel e tem 333 metros de
+              altura.
+            </li>
+            <li>
+              A Tokyo Skytree, com 634 metros, é a torre mais alta do mundo.
+            </li>
+            <li>
+              Tóquio acolheu os Jogos Olímpicos de Verão duas vezes, em 1964 e
+              em 2021.
+            </li>
+          </ol>
+        </section>
+
+        <img
+          class="info-foto foto4"
+          src="images/tokyo_tower.jpg"
+          alt="Tokyo Tower ao entardecer"
+        />
+      </div>
     </main>
     <footer>
       <p>DIW 2026</p>
