@@ -1,7 +1,271 @@
-body {
-  background-color: #965c5246;
+/* paleta e tipografia */
+:root {
+  --indigo: #1d2b4f;
+  --indigo-escuro: #131d38;
+  --indigo-claro: #e4e8f1;
+  --ambar: #f2b33d;
+  --texto: #1a1f2b;
+  --texto-suave: #4a5470;
+  --fonte-titulos: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  --fonte-texto: "Source Sans 3", "Segoe UI", sans-serif;
 }
 
-img {
-  width: 300px;
+* {
+  box-sizing: border-box;
+}
+
+/* scroll suave nas âncoras, exceto se o utilizador preferir menos movimento */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte-texto);
+  color: var(--texto);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--fonte-titulos);
+  line-height: 1.1;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ambar);
+  outline-offset: 3px;
+}
+
+/* cada secção ocupa pelo menos o ecrã inteiro */
+section {
+  min-height: 100vh;
+  padding: 96px 8%;
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  position: relative;
+  height: 100vh;
+  padding: 0;
+  color: white;
+  /* gradiente escuro à esquerda para o texto se ler sobre a imagem */
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(15, 22, 40, 0.85) 0%,
+      rgba(15, 22, 40, 0.45) 55%,
+      rgba(15, 22, 40, 0) 100%
+    ),
+    url("images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* menu fixo no topo da hero */
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 8%;
+}
+
+nav ul {
+  list-style: none; /* remove os bullets */
+  padding: 0; /* remove o recuo interno */
+  margin: 0; /* remove o espaço externo */
+  display: flex; /* alinha os itens em linha */
+  gap: 2rem; /* espaçamento entre os links */
+}
+
+nav a {
+  text-decoration: none; /* remove o sublinhado dos links */
+  color: inherit; /* herda a cor do elemento pai */
+}
+
+nav ul a:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.logo {
+  font-family: var(--fonte-titulos);
+  font-weight: 800;
+  font-size: 1.3rem;
+  border: 2px solid white;
+  padding: 2px 8px;
+}
+
+/* texto motivacional posicionado sobre a imagem */
+.hero-texto {
+  position: absolute;
+  left: 8%;
+  bottom: 16%;
+  max-width: 40rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.75rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.5rem;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  max-width: 32rem;
+  margin: 0 0 2rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* call-to-action com aspeto de botão */
+.cta {
+  display: inline-block;
+  padding: 14px 30px;
+  background-color: var(--ambar);
+  color: var(--indigo-escuro);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.cta:hover {
+  background-color: #ffc85a;
+}
+
+/* ---------- projetos ---------- */
+
+.projetos {
+  background-color: var(--indigo-claro);
+}
+
+.projetos h2,
+.disciplina h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 0 0.5rem;
+}
+
+.intro {
+  color: var(--texto-suave);
+  margin: 0 0 3rem;
+}
+
+/* cards organizados com flex, quebram linha em ecrãs estreitos */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.card {
+  flex: 1 1 260px;
+  max-width: 380px;
+  padding: 28px;
+  background-color: white;
+  border-top: 4px solid var(--indigo);
+  color: inherit;
+  text-decoration: none;
+}
+
+.card:hover {
+  border-top-color: var(--ambar);
+}
+
+.card-num {
+  font-weight: 600;
+  color: var(--texto-suave);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.card p {
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+/* ---------- disciplina ---------- */
+
+/* telemóvel: texto e wordcloud um por baixo do outro */
+.disciplina {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+  background-color: var(--indigo);
+  color: white;
+}
+
+.disciplina a {
+  color: var(--ambar);
+}
+
+.disciplina-texto {
+  max-width: 34rem;
+  font-size: 1.15rem;
+}
+
+.wordcloud {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+}
+
+/* desktop: texto e wordcloud lado a lado */
+@media (min-width: 768px) {
+  .disciplina {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .disciplina-texto,
+  .wordcloud {
+    flex: 1;
+  }
+}
+
+/* ---------- rodapé ---------- */
+
+footer {
+  padding: 20px;
+  background-color: var(--indigo-escuro);
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* ---------- ajustes para telemóvel ---------- */
+
+@media (max-width: 600px) {
+  .menu {
+    padding: 20px 6%;
+  }
+
+  nav ul {
+    gap: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .hero-texto {
+    left: 6%;
+    right: 6%;
+    bottom: 10%;
+  }
 }

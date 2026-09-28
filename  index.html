@@ -2,41 +2,97 @@
 <html lang="pt">
   <head>
     <meta charset="utf-8" />
-    <title>Primeira Página</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Miguel Duarte | DIW 26/27</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:wght@400;600&display=swap"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Primeira Página Web!</h1>
-    </header>
-
     <main>
-      <p>Eis a minha primeira página Web!</p>
-      <p>
-        Na Unidade Curricular de
-        <a href="https://moodle.ensinolusofona.pt/course/view.php?id=11232">
-          Desenvolvimento de Interfaces Web
-        </a>
-        abordaremos as seguintes tecnologias Web &#127760;:
-      </p>
-      <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>React e Next.js</li>
-      </ul>
-      <p>Iremos criar soluções criativas!</p>
-      <nav>
-        <ul>
-          <li><a href="lab1/index.html">Lab1</a></li>
-          <li><a href="lab2/index.html">Lab2</a></li>
-        </ul>
-      </nav>
-      <img src="images/diw.svg" alt="Desenvolvimento de Interfaces Web" />
+      <!-- secção 1: hero image com menu e texto posicionado -->
+      <section id="inicio" class="hero">
+        <nav class="menu">
+          <a href="#inicio" class="logo">MD</a>
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#cadeira">Interfaces Web</a></li>
+          </ul>
+        </nav>
+
+        <div class="hero-texto">
+          <h1>Aprendo a construir a web, um lab de cada vez.</h1>
+          <p>
+            Sou o Miguel Duarte, estudante de Engenharia Informática na
+            Universidade Lusófona. Aqui reúno o que faço em Desenvolvimento de
+            Interfaces Web.
+          </p>
+          <a href="#projetos" class="cta">Ver projetos</a>
+        </div>
+      </section>
+
+      <!-- secção 2: projetos em cards organizados com flex -->
+      <section id="projetos" class="projetos">
+        <h2>Projetos</h2>
+        <p class="intro">
+          Os laboratórios feitos ao longo da unidade curricular.
+        </p>
+
+        <div class="cards">
+          <a href="lab1/index.html" class="card">
+            <span class="card-num">Lab 1</span>
+            <h3>Primeira página web</h3>
+            <p>Estrutura base em HTML, com listas, links e imagens.</p>
+          </a>
+          <a href="lab2/index.html" class="card">
+            <span class="card-num">Lab 2</span>
+            <h3>Site sobre Tóquio</h3>
+            <p>
+              Várias páginas com tabela, galeria em flexbox, vídeo e poesia.
+            </p>
+          </a>
+          <a href="#inicio" class="card">
+            <span class="card-num">Lab 3</span>
+            <h3>Landing page</h3>
+            <p>Esta página: hero image, menu com âncoras e media queries.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- secção 3: a disciplina, com texto e wordcloud lado a lado no desktop -->
+      <section id="cadeira" class="disciplina">
+        <div class="disciplina-texto">
+          <h2>Interfaces Web</h2>
+          <p>
+            Na unidade curricular de
+            <a href="https://www.ulusofona.pt"
+              >Desenvolvimento de Interfaces Web</a
+            >
+            abordamos as seguintes tecnologias web 🌐:
+          </p>
+          <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>React e Next.js</li>
+          </ul>
+          <p>Iremos criar soluções criativas!</p>
+        </div>
+        <img
+          src="images/wordcloud.png"
+          alt="Nuvem de palavras com HTML, CSS, JavaScript, React e Web"
+          class="wordcloud"
+        />
+      </section>
     </main>
 
     <footer>
-      <p>Universidade Lusófona © 2025</p>
+      <p>Universidade Lusófona © 2026</p>
     </footer>
   </body>
 </html>
