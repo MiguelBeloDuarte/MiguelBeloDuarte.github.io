@@ -44,6 +44,19 @@ h3 {
   outline-offset: 3px;
 }
 
+/* ---------- rodapé ---------- */
+
+footer {
+  padding: 20px;
+  background-color: var(--indigo-escuro);
+  color: rgb(255 255 255 / 70%);
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
 /* cada secção ocupa pelo menos o ecrã inteiro */
 section {
   min-height: 100vh;
@@ -57,15 +70,16 @@ section {
   height: 100vh;
   padding: 0;
   color: white;
+
   /* gradiente escuro à esquerda para o texto se ler sobre a imagem */
   background-image:
     linear-gradient(
       90deg,
-      rgba(15, 22, 40, 0.85) 0%,
-      rgba(15, 22, 40, 0.45) 55%,
-      rgba(15, 22, 40, 0) 100%
+      rgb(15 22 40 / 85%) 0%,
+      rgb(15 22 40 / 45%) 55%,
+      rgb(15 22 40 / 0%) 100%
     ),
-    url("../images/web.jpg");
+    url("images/web.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -93,6 +107,11 @@ nav ul {
 nav a {
   text-decoration: none; /* remove o sublinhado dos links */
   color: inherit; /* herda a cor do elemento pai */
+}
+
+/* link da secção da disciplina (aqui por causa da especificidade) */
+.disciplina a {
+  color: var(--ambar);
 }
 
 nav ul a:hover {
@@ -127,7 +146,7 @@ nav ul a:hover {
   font-size: 1.15rem;
   max-width: 32rem;
   margin: 0 0 2rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgb(255 255 255 / 85%);
 }
 
 /* call-to-action com aspeto de botão */
@@ -210,10 +229,6 @@ nav ul a:hover {
   color: white;
 }
 
-.disciplina a {
-  color: var(--ambar);
-}
-
 .disciplina-texto {
   max-width: 34rem;
   font-size: 1.15rem;
@@ -226,7 +241,7 @@ nav ul a:hover {
 }
 
 /* desktop: texto e wordcloud lado a lado */
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .disciplina {
     flex-direction: row;
     align-items: center;
@@ -238,22 +253,9 @@ nav ul a:hover {
   }
 }
 
-/* ---------- rodapé ---------- */
-
-footer {
-  padding: 20px;
-  background-color: var(--indigo-escuro);
-  color: rgba(255, 255, 255, 0.7);
-  text-align: center;
-}
-
-footer p {
-  margin: 0;
-}
-
 /* ---------- ajustes para telemóvel ---------- */
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .menu {
     padding: 20px 6%;
   }
