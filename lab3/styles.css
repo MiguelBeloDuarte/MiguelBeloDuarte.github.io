@@ -5,7 +5,8 @@
   box-sizing: border-box;
 }
 
-/* página: fundo cinzento claro, sem margens do browser */
+/* página: fundo cinzento claro, sem margens do browser;
+   em coluna e com a altura do ecrã para a caixa branca poder esticar */
 body {
   display: flex;
   flex-direction: column;
@@ -76,30 +77,35 @@ nav a[href="info.html"]::before {
 body > img {
   display: block;
   width: 100%;
-  flex: 1; /* ocupa todo o espaço livre entre o menu e o texto */
+  flex: 1; /* na Home é a imagem que preenche o espaço livre */
   min-height: 250px;
   object-fit: cover;
   margin-top: 10px;
 }
 
-/* conteúdo principal: caixa branca afastada dos lados */
+/* conteúdo principal: caixa branca afastada dos lados, que cresce até
+   ao rodapé (o conteúdo lá dentro mantém o seu tamanho) */
 main {
+  flex: 1;
   margin: 20px 10px;
   padding: 10px 20px;
   background-color: white;
 }
 
-/* na localização e na informação, a caixa branca estica até ao rodapé */
+/* na Home a caixa do texto fica do tamanho do texto */
+body > img + main {
+  flex: none;
+}
+
+/* na localização e na informação, o conteúdo estica com a caixa branca */
 main:has(.localizacao),
 main:has(.info-grid) {
   display: flex;
-  flex: 1;
   flex-direction: column;
 }
 
 /* rodapé escuro */
 footer {
-  margin-top: auto; /* rodapé sempre no fundo, mesmo em páginas curtas */
   background-color: #1a1a1a;
   color: white;
   text-align: center;
@@ -115,8 +121,12 @@ footer {
   gap: 40px;
 }
 
+/* texto junto e centrado na vertical, ao lado do mapa */
 .local-texto {
+  display: flex;
   flex: 1;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* texto e título do mapa começam à mesma altura */
@@ -136,7 +146,7 @@ footer {
   display: block;
   flex: 1;
   width: 100%;
-  min-height: 350px;
+  min-height: 300px;
   border: 0;
 }
 
@@ -352,15 +362,18 @@ td {
 
 /* ---------- informação: grelha ---------- */
 
-/* metade esquerda: texto; metade direita: as duas fotos uma por cima da
-   outra; a última linha (1fr) cresce até ao rodapé */
+/* metade esquerda: texto junto e centrado na vertical (as linhas vazias
+   "." de cima e de baixo ficam com o espaço livre); metade direita: as duas
+   fotos lado a lado, que esticam até ao fundo da caixa branca */
 .info-grid {
   display: grid;
   flex: 1;
   grid-template:
+    ".      fotos" 1fr
     "intro  fotos" auto
     "tabela fotos" auto
-    "curios fotos" 1fr / 1fr 1fr;
+    "curios fotos" auto
+    ".      fotos" 1fr / 1fr 1fr;
   gap: 20px;
 }
 
@@ -377,11 +390,11 @@ td {
   grid-area: curios;
 }
 
-/* contentor das fotos: duas linhas iguais (50/50) */
+/* contentor das fotos: duas colunas iguais (50/50) */
 .info-fotos {
   display: grid;
   grid-area: fotos;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
@@ -486,6 +499,10 @@ td {
     flex: none;
   }
 
+  .local-texto {
+    justify-content: flex-start;
+  }
+
   .local-mapa iframe {
     flex: none;
     min-height: 0;
@@ -499,6 +516,7 @@ td {
 
   /* grelha de 2 colunas, sem células vazias */
   .info-grid {
+    align-content: start;
     grid-template:
       "intro" auto
       "fotos" auto
@@ -507,9 +525,7 @@ td {
     gap: 12px;
   }
 
-  /* no telemóvel as fotos ficam lado a lado */
   .info-fotos {
-    grid-template: auto / 1fr 1fr;
     gap: 12px;
   }
 
