@@ -352,16 +352,16 @@ td {
 
 /* ---------- informação: grelha ---------- */
 
-/* 3 colunas: informação ao centro, uma foto alta de cada lado;
-   a última linha (1fr) cresce até ao rodapé */
+/* metade esquerda: texto; metade direita: as duas fotos uma por cima da
+   outra; a última linha (1fr) cresce até ao rodapé */
 .info-grid {
   display: grid;
   flex: 1;
   grid-template:
-    "foto1 intro  foto2" auto
-    "foto1 tabela foto2" auto
-    "foto1 curios foto2" 1fr / 1fr 2fr 1fr;
-  gap: 20px 40px;
+    "intro  fotos" auto
+    "tabela fotos" auto
+    "curios fotos" 1fr / 1fr 1fr;
+  gap: 20px;
 }
 
 /* cada elemento vai para a sua área da grelha */
@@ -373,21 +373,16 @@ td {
   grid-area: tabela;
 }
 
-/* tabela centrada na coluna do meio */
-.info-tabela table {
-  margin: 0 auto;
-}
-
 .info-curiosidades {
   grid-area: curios;
 }
 
-.foto1 {
-  grid-area: foto1;
-}
-
-.foto2 {
-  grid-area: foto2;
+/* contentor das fotos: duas linhas iguais (50/50) */
+.info-fotos {
+  display: grid;
+  grid-area: fotos;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
 }
 
 /* imagens preenchem a célula sem deformar; o contain faz com que a altura
@@ -505,10 +500,16 @@ td {
   /* grelha de 2 colunas, sem células vazias */
   .info-grid {
     grid-template:
-      "intro  intro" auto
-      "foto1  foto2" auto
-      "tabela tabela" auto
-      "curios curios" auto / 1fr 1fr;
+      "intro" auto
+      "fotos" auto
+      "tabela" auto
+      "curios" auto / 1fr;
+    gap: 12px;
+  }
+
+  /* no telemóvel as fotos ficam lado a lado */
+  .info-fotos {
+    grid-template: auto / 1fr 1fr;
     gap: 12px;
   }
 
