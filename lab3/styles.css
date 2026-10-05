@@ -76,7 +76,7 @@ nav a[href="info.html"]::before {
 body > img {
   display: block;
   width: 100%;
-  height: 50vh;
+  flex: 1; /* ocupa todo o espaço livre entre o menu e o texto */
   min-height: 250px;
   object-fit: cover;
   margin-top: 10px;
@@ -87,6 +87,14 @@ main {
   margin: 20px 10px;
   padding: 10px 20px;
   background-color: white;
+}
+
+/* na localização e na informação, a caixa branca estica até ao rodapé */
+main:has(.localizacao),
+main:has(.info-grid) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 /* rodapé escuro */
@@ -103,6 +111,7 @@ footer {
 /* PC: texto ao lado do mapa */
 .localizacao {
   display: flex;
+  flex: 1;
   gap: 40px;
 }
 
@@ -110,8 +119,9 @@ footer {
   flex: 1;
 }
 
-/* texto começa encostado ao topo, à mesma altura do mapa */
-.local-texto > :first-child {
+/* texto e título do mapa começam à mesma altura */
+.local-texto > :first-child,
+.local-mapa h3 {
   margin-top: 0;
 }
 
@@ -342,15 +352,16 @@ td {
 
 /* ---------- informação: grelha ---------- */
 
-/* 4 colunas: cada foto ocupa 2 células, sem espaços desaproveitados */
+/* 4 colunas: cada foto ocupa 2 células; as linhas de baixo (1fr) crescem
+   até ao rodapé */
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-areas:
-    "intro  intro  foto1  foto1"
-    "tabela tabela foto2  foto2"
-    "foto3  curios curios foto4"
-    "foto3  curios curios foto4";
+  flex: 1;
+  grid-template:
+    "intro  intro  foto1  foto1" auto
+    "tabela tabela foto2  foto2" auto
+    "foto3  curios curios foto4" 1fr
+    "foto3  curios curios foto4" 1fr / 1fr 1fr 1fr 1fr;
   gap: 20px;
 }
 
@@ -498,14 +509,12 @@ td {
 
   /* grelha de 2 colunas, sem células vazias */
   .info-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: auto;
-    grid-template-areas:
-      "intro  intro"
-      "foto1  foto2"
-      "tabela tabela"
-      "curios curios"
-      "foto3  foto4";
+    grid-template:
+      "intro  intro" auto
+      "foto1  foto2" auto
+      "tabela tabela" auto
+      "curios curios" auto
+      "foto3  foto4" auto / 1fr 1fr;
     gap: 12px;
   }
 
