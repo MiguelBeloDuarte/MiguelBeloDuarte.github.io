@@ -352,17 +352,16 @@ td {
 
 /* ---------- informação: grelha ---------- */
 
-/* 4 colunas: cada foto ocupa 2 células; as linhas de baixo (1fr) crescem
-   até ao rodapé */
+/* 3 colunas: informação ao centro, uma foto alta de cada lado;
+   a última linha (1fr) cresce até ao rodapé */
 .info-grid {
   display: grid;
   flex: 1;
   grid-template:
-    "intro  intro  foto1  foto1" auto
-    "tabela tabela foto2  foto2" auto
-    "foto3  curios curios foto4" 1fr
-    "foto3  curios curios foto4" 1fr / 1fr 1fr 1fr 1fr;
-  gap: 20px;
+    "foto1 intro  foto2" auto
+    "foto1 tabela foto2" auto
+    "foto1 curios foto2" 1fr / 1fr 2fr 1fr;
+  gap: 20px 40px;
 }
 
 /* cada elemento vai para a sua área da grelha */
@@ -374,9 +373,13 @@ td {
   grid-area: tabela;
 }
 
+/* tabela centrada na coluna do meio */
+.info-tabela table {
+  margin: 0 auto;
+}
+
 .info-curiosidades {
   grid-area: curios;
-  align-self: center;
 }
 
 .foto1 {
@@ -385,14 +388,6 @@ td {
 
 .foto2 {
   grid-area: foto2;
-}
-
-.foto3 {
-  grid-area: foto3;
-}
-
-.foto4 {
-  grid-area: foto4;
 }
 
 /* imagens preenchem a célula sem deformar; o contain faz com que a altura
@@ -513,8 +508,7 @@ td {
       "intro  intro" auto
       "foto1  foto2" auto
       "tabela tabela" auto
-      "curios curios" auto
-      "foto3  foto4" auto / 1fr 1fr;
+      "curios curios" auto / 1fr 1fr;
     gap: 12px;
   }
 
