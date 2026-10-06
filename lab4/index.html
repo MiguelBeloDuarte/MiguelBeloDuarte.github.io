@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 4 | JavaScript</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:wght@400;600&display=swap"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- cabeçalho: link de regresso à landing page e apresentação do lab -->
+    <header>
+      <div class="apresentacao">
+        <a href="../index.html#projetos" class="voltar">Voltar aos projetos</a>
+        <h1>A página agora responde.</h1>
+        <p>
+          Lab 4 de Desenvolvimento de Interfaces Web: seis experiências com
+          atributos de evento e manipulação do DOM em JavaScript. Clica, passa o
+          rato e escreve para veres cada uma a funcionar.
+        </p>
+        <img
+          src="images/diw.svg"
+          alt="Nuvem de palavras com HTML, CSS, JavaScript, React e Web"
+          class="wordcloud"
+        />
+      </div>
+    </header>
+
+    <main>
+      <!-- experiência 1: onclick com if e else -->
+      <section class="experiencia">
+        <h2>Saudação</h2>
+        <p>
+          O <code>onclick</code> do botão troca o texto e a cor da saudação.
+        </p>
+        <div class="palco">
+          <p id="greeting" class="destaque">Olá!</p>
+          <div class="botoes">
+            <button type="button" onclick="toggleGreeting()">
+              Trocar saudação
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- experiência 2: onmouseover e onmouseout -->
+      <section class="experiencia">
+        <h2>Passa por aqui</h2>
+        <p>
+          O <code>onmouseover</code> e o <code>onmouseout</code> reagem à
+          entrada e à saída do rato.
+        </p>
+        <div class="palco">
+          <p
+            id="zone"
+            class="zona"
+            onmouseover="enterZone()"
+            onmouseout="leaveZone()"
+          >
+            Passa por aqui!
+          </p>
+        </div>
+      </section>
+
+      <!-- experiência 3: a mesma função chamada com cores diferentes -->
+      <section class="experiencia">
+        <h2>Pinta-me</h2>
+        <p>
+          Cada botão chama a mesma função no <code>onclick</code>, com uma cor
+          diferente.
+        </p>
+        <div class="palco">
+          <p id="canvas" class="tela">Pinta-me!</p>
+          <div class="botoes">
+            <button type="button" onclick="paint('firebrick')">Vermelho</button>
+            <button type="button" onclick="paint('seagreen')">Verde</button>
+            <button type="button" onclick="paint('royalblue')">Azul</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- experiência 4: onkeydown e onkeyup -->
+      <section class="experiencia">
+        <h2>Teclado</h2>
+        <p>
+          O <code>onkeydown</code> alterna a cor do campo e o
+          <code>onkeyup</code> conta as teclas libertadas.
+        </p>
+        <div class="palco">
+          <label for="typing">Experimenta escrever</label>
+          <input
+            type="text"
+            id="typing"
+            onkeydown="pressKey()"
+            onkeyup="releaseKey()"
+          />
+          <p class="resultado">
+            Teclas libertadas: <span id="key-count">0</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- experiência 5: onclick e ondblclick -->
+      <section class="experiencia">
+        <h2>Contador</h2>
+        <p>
+          O <code>onclick</code> soma um e o <code>ondblclick</code> volta a
+          zero.
+        </p>
+        <div class="palco">
+          <p id="counter" class="numero">0</p>
+          <div class="botoes">
+            <button type="button" onclick="count()">Contar</button>
+            <button type="button" ondblclick="resetCount()">
+              Repor com duplo clique
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- experiência 6: onmousemove -->
+      <section class="experiencia">
+        <h2>Barra</h2>
+        <p>
+          Move o rato dentro da caixa: o <code>onmousemove</code> enche a barra.
+        </p>
+        <div class="palco">
+          <div class="pista" onmousemove="fillBar()">
+            <div id="bar" class="barra"></div>
+          </div>
+          <p id="bar-label" class="resultado">0%</p>
+          <div class="botoes">
+            <button type="button" onclick="emptyBar()">Esvaziar</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Universidade Lusófona © 2026</p>
+    </footer>
+
+    <!-- no fim do body: o script é executado depois de a página carregar -->
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

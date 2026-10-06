@@ -1,0 +1,264 @@
+/* cores (as mesmas da landing page): índigo #1d2b4f, índigo escuro #131d38,
+   índigo claro #e4e8f1, âmbar #f2b33d, texto #1a1f2b, texto suave #4a5470 */
+
+/* padding e border contam dentro da largura */
+* {
+  box-sizing: border-box;
+}
+
+/* telemóvel: cabeçalho, experiências e rodapé uns por baixo dos outros */
+body {
+  display: grid;
+  grid-template-areas:
+    "cabecalho"
+    "experiencias"
+    "rodape";
+  margin: 0;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: #1a1f2b;
+}
+
+h1,
+h2 {
+  font-family: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  line-height: 1.1;
+}
+
+code {
+  padding: 2px 6px;
+  font-family: monospace;
+  background-color: #e4e8f1;
+  border-radius: 4px;
+}
+
+/* ---------- rodapé (fica aqui porque o stylelint quer os seletores menos
+   específicos antes dos mais específicos) ---------- */
+
+footer {
+  grid-area: rodape;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  background-color: #131d38;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* ---------- cabeçalho ---------- */
+
+header {
+  grid-area: cabecalho;
+  padding: 48px 8%;
+  color: white;
+  background-color: #1d2b4f;
+}
+
+.voltar {
+  color: #f2b33d;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.voltar:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  margin: 2rem 0 1.5rem;
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+header p {
+  max-width: 32rem;
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+/* a nuvem de palavras só aparece no desktop */
+.wordcloud {
+  display: none;
+}
+
+/* ---------- experiências ---------- */
+
+main {
+  display: grid;
+  grid-area: experiencias;
+  gap: 24px;
+  padding: 32px 6%;
+  background-color: #e4e8f1;
+}
+
+/* título, descrição e palco em coluna */
+.experiencia {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px;
+  background-color: white;
+  border-top: 4px solid #1d2b4f;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.experiencia p {
+  margin: 0;
+  color: #4a5470;
+}
+
+/* o palco ocupa a altura que sobra, com os elementos centrados na vertical */
+.palco {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 16px;
+  justify-content: center;
+  padding-top: 12px;
+}
+
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+button {
+  padding: 12px 20px;
+  color: white;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #1d2b4f;
+  border: 2px solid #1d2b4f;
+  border-radius: 4px;
+}
+
+button:hover {
+  color: #131d38;
+  background-color: #f2b33d;
+  border-color: #f2b33d;
+}
+
+/* ---------- elementos que o JavaScript altera ---------- */
+
+/* seletores com duas classes de peso para ganharem a ".experiencia p" */
+.experiencia .destaque,
+.experiencia .numero {
+  color: #1d2b4f;
+  font-family: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.experiencia .destaque {
+  font-size: 3rem;
+}
+
+.experiencia .numero {
+  font-size: 5rem;
+}
+
+.experiencia .zona {
+  padding: 40px 16px;
+  color: #131d38;
+  font-weight: 600;
+  text-align: center;
+  background-color: #e4e8f1;
+  border: 2px dashed #1d2b4f;
+}
+
+.experiencia .tela {
+  padding: 28px 16px;
+  color: white;
+  font-family: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+  background-color: #1d2b4f;
+}
+
+.experiencia .resultado {
+  color: #1a1f2b;
+  font-weight: 600;
+}
+
+label {
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  font-size: 1rem;
+  background-color: white;
+  border: 2px solid #1d2b4f;
+  border-radius: 4px;
+}
+
+/* caixa onde o rato se move; a barra cresce lá dentro */
+.pista {
+  height: 72px;
+  background-color: #e4e8f1;
+  border: 2px solid #1d2b4f;
+}
+
+.barra {
+  width: 0%;
+  height: 100%;
+  background-color: #f2b33d;
+}
+
+/* ---------- tablet: experiências em duas colunas ---------- */
+
+@media (width >= 700px) {
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- desktop: cabeçalho à esquerda, experiências à direita ---------- */
+
+@media (width >= 1100px) {
+  body {
+    grid-template-areas:
+      "cabecalho experiencias"
+      "rodape rodape";
+    grid-template-columns: 1fr 2fr;
+  }
+
+  header {
+    padding: 64px 12%;
+  }
+
+  /* a apresentação acompanha o scroll enquanto as experiências passam */
+  .apresentacao {
+    position: sticky;
+    top: 64px;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  main {
+    padding: 64px 5%;
+  }
+
+  .wordcloud {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    margin-top: 3rem;
+  }
+}
