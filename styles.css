@@ -1,61 +1,91 @@
-/* paleta e tipografia */
-:root {
-  --indigo: #1d2b4f;
-  --indigo-escuro: #131d38;
-  --indigo-claro: #e4e8f1;
-  --ambar: #f2b33d;
-  --texto: #1a1f2b;
-  --texto-suave: #4a5470;
-  --fonte-titulos: "Bricolage Grotesque", "Segoe UI", sans-serif;
-  --fonte-texto: "Source Sans 3", "Segoe UI", sans-serif;
-}
+/* cores: índigo #1d2b4f, índigo escuro #131d38, índigo claro #e4e8f1,
+   âmbar #f2b33d, texto #1a1f2b, texto suave #4a5470 */
 
+/* padding e border contam dentro da largura */
 * {
   box-sizing: border-box;
 }
 
-/* scroll suave nas âncoras, exceto se o utilizador preferir menos movimento */
-html {
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
-
 body {
   margin: 0;
-  font-family: var(--fonte-texto);
-  color: var(--texto);
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
   line-height: 1.6;
+  color: #1a1f2b;
 }
 
 h1,
 h2,
 h3 {
-  font-family: var(--fonte-titulos);
+  font-family: "Bricolage Grotesque", "Segoe UI", sans-serif;
   line-height: 1.1;
-}
-
-:focus-visible {
-  outline: 3px solid var(--ambar);
-  outline-offset: 3px;
 }
 
 /* ---------- rodapé ---------- */
 
 footer {
   padding: 20px;
-  background-color: var(--indigo-escuro);
-  color: rgb(255 255 255 / 70%);
+  color: white;
   text-align: center;
+  background-color: #131d38;
 }
 
 footer p {
   margin: 0;
 }
+
+/* ---------- cabeçalho e menu ---------- */
+
+/* preso ao topo da página, por cima da hero */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  color: white;
+  background-color: rgb(19 29 56 / 60%);
+}
+
+/* logótipo à esquerda, links à direita */
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+}
+
+nav ul {
+  display: flex; /* links em linha */
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style-type: none; /* remove os bullets */
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+/* link da secção da disciplina (fica aqui porque o stylelint quer os
+   seletores menos específicos antes dos mais específicos) */
+.disciplina a {
+  color: #f2b33d;
+}
+
+nav ul a:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  padding: 2px 8px;
+  border: 2px solid white;
+  font-family: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+/* ---------- secções ---------- */
 
 /* cada secção ocupa pelo menos o ecrã inteiro */
 section {
@@ -65,98 +95,46 @@ section {
 
 /* ---------- hero ---------- */
 
+/* imagem de fundo a cobrir a secção; relativa para posicionar o texto */
 .hero {
   position: relative;
-  height: 100vh;
-  padding: 0;
   color: white;
-
-  /* gradiente escuro à esquerda para o texto se ler sobre a imagem */
-  background-image:
-    linear-gradient(
-      90deg,
-      rgb(15 22 40 / 85%) 0%,
-      rgb(15 22 40 / 45%) 55%,
-      rgb(15 22 40 / 0%) 100%
-    ),
-    url("images/web.jpg");
-  background-size: cover;
+  background-image: url("images/web.jpg");
   background-position: center;
+  background-size: cover;
 }
 
-/* menu fixo no topo da hero */
-.menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 28px 8%;
-}
-
-nav ul {
-  list-style: none; /* remove os bullets */
-  padding: 0; /* remove o recuo interno */
-  margin: 0; /* remove o espaço externo */
-  display: flex; /* alinha os itens em linha */
-  gap: 2rem; /* espaçamento entre os links */
-}
-
-nav a {
-  text-decoration: none; /* remove o sublinhado dos links */
-  color: inherit; /* herda a cor do elemento pai */
-}
-
-/* link da secção da disciplina (aqui por causa da especificidade) */
-.disciplina a {
-  color: var(--ambar);
-}
-
-nav ul a:hover {
-  text-decoration: underline;
-  text-underline-offset: 6px;
-}
-
-.logo {
-  font-family: var(--fonte-titulos);
-  font-weight: 800;
-  font-size: 1.3rem;
-  border: 2px solid white;
-  padding: 2px 8px;
-}
-
-/* texto motivacional posicionado sobre a imagem */
+/* texto posicionado sobre a imagem, com fundo escuro para se ler */
 .hero-texto {
   position: absolute;
-  left: 8%;
   bottom: 16%;
+  left: 8%;
   max-width: 40rem;
+  padding: 28px 32px;
+  background-color: rgb(19 29 56 / 75%);
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 6vw, 4.75rem);
+  margin: 0 0 1.5rem;
+  font-size: 4rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  margin: 0 0 1.5rem;
 }
 
 .hero p {
-  font-size: 1.15rem;
   max-width: 32rem;
   margin: 0 0 2rem;
-  color: rgb(255 255 255 / 85%);
+  font-size: 1.15rem;
 }
 
-/* call-to-action com aspeto de botão */
+/* link com aspeto de botão */
 .cta {
   display: inline-block;
   padding: 14px 30px;
-  background-color: var(--ambar);
-  color: var(--indigo-escuro);
+  color: #131d38;
   font-weight: 600;
   text-decoration: none;
+  background-color: #f2b33d;
   border-radius: 4px;
 }
 
@@ -167,18 +145,18 @@ nav ul a:hover {
 /* ---------- projetos ---------- */
 
 .projetos {
-  background-color: var(--indigo-claro);
+  background-color: #e4e8f1;
 }
 
 .projetos h2,
 .disciplina h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
   margin: 0 0 0.5rem;
+  font-size: 3rem;
 }
 
 .intro {
-  color: var(--texto-suave);
   margin: 0 0 3rem;
+  color: #4a5470;
 }
 
 /* cards organizados com flex, quebram linha em ecrãs estreitos */
@@ -192,29 +170,29 @@ nav ul a:hover {
   flex: 1 1 260px;
   max-width: 380px;
   padding: 28px;
-  background-color: white;
-  border-top: 4px solid var(--indigo);
-  color: inherit;
+  color: #1a1f2b;
   text-decoration: none;
+  background-color: white;
+  border-top: 4px solid #1d2b4f;
 }
 
 .card:hover {
-  border-top-color: var(--ambar);
+  border-top-color: #f2b33d;
 }
 
 .card-num {
+  color: #4a5470;
   font-weight: 600;
-  color: var(--texto-suave);
 }
 
 .card h3 {
-  font-size: 1.5rem;
   margin: 0.5rem 0;
+  font-size: 1.5rem;
 }
 
 .card p {
   margin: 0;
-  color: var(--texto-suave);
+  color: #4a5470;
 }
 
 /* ---------- disciplina ---------- */
@@ -225,8 +203,8 @@ nav ul a:hover {
   flex-direction: column;
   justify-content: center;
   gap: 48px;
-  background-color: var(--indigo);
   color: white;
+  background-color: #1d2b4f;
 }
 
 .disciplina-texto {
@@ -240,7 +218,8 @@ nav ul a:hover {
   height: auto;
 }
 
-/* desktop: texto e wordcloud lado a lado */
+/* ---------- desktop: texto e wordcloud lado a lado ---------- */
+
 @media (width >= 768px) {
   .disciplina {
     flex-direction: row;
@@ -253,11 +232,11 @@ nav ul a:hover {
   }
 }
 
-/* ---------- ajustes para telemóvel ---------- */
+/* ---------- telemóvel ---------- */
 
 @media (width <= 600px) {
   .menu {
-    padding: 20px 6%;
+    padding: 16px 6%;
   }
 
   nav ul {
@@ -266,8 +245,18 @@ nav ul a:hover {
   }
 
   .hero-texto {
-    left: 6%;
     right: 6%;
     bottom: 10%;
+    left: 6%;
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .projetos h2,
+  .disciplina h2 {
+    font-size: 2rem;
   }
 }

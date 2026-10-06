@@ -4,8 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Miguel Duarte | DIW 26/27</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:wght@400;600&display=swap"
@@ -13,18 +11,21 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main>
-      <!-- secção 1: hero image com menu e texto posicionado -->
-      <section id="inicio" class="hero">
-        <nav class="menu">
-          <a href="#inicio" class="logo">MD</a>
-          <ul>
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#projetos">Projetos</a></li>
-            <li><a href="#cadeira">Interfaces Web</a></li>
-          </ul>
-        </nav>
+    <!-- cabeçalho: logótipo e menu com âncoras, por cima da hero -->
+    <header>
+      <nav class="menu">
+        <a href="#inicio" class="logo">MD</a>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#cadeira">Interfaces Web</a></li>
+        </ul>
+      </nav>
+    </header>
 
+    <main>
+      <!-- secção 1: hero image com texto posicionado -->
+      <section id="inicio" class="hero">
         <div class="hero-texto">
           <h1>Aprendo a construir a web, um lab de cada vez.</h1>
           <p>
@@ -89,7 +90,7 @@
           <p>Iremos criar soluções criativas!</p>
         </div>
         <img
-          src="../images/diw.svg"
+          src="images/diw.svg"
           alt="Nuvem de palavras com HTML, CSS, JavaScript, React e Web"
           class="wordcloud"
         />
