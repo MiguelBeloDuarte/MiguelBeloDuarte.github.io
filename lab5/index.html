@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 5 - Eventos</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Eventos 1.0</h1>
+
+      <ol>
+        <li>
+          <span id="hover-text" onmouseover="hoverIn()" onmouseout="hoverOut()"
+            >Passa por aqui!</span
+          >
+        </li>
+
+        <li>
+          <span id="paint-text">Dá-me uma cor!</span>
+          <button type="button" class="color" data-color="coral">Coral</button>
+          <button type="button" class="color" data-color="purple">Roxo</button>
+          <button type="button" class="color" data-color="darkturquoise">
+            Turquesa
+          </button>
+        </li>
+
+        <li>
+          <label>
+            Experimenta escrever...
+            <input id="typing-input" type="text" onkeyup="changeInputColor()" />
+          </label>
+        </li>
+
+        <li>
+          <label>
+            Escolhe a cor do fundo:
+            <select id="bg-select">
+              <option value="#f4f4f8">Original</option>
+              <option value="lavender">Lavanda</option>
+              <option value="peachpuff">Pêssego</option>
+              <option value="honeydew">Menta</option>
+            </select>
+          </label>
+        </li>
+
+        <li>
+          Contador:
+          <button type="button" id="decrement">-1</button>
+          <span id="counter">0</span>
+          <button type="button" id="increment">+1</button>
+          <button type="button" id="reset">Reset</button>
+        </li>
+
+        <li>
+          <form id="greeting-form">
+            <label>
+              Nome:
+              <input id="name-input" type="text" placeholder="o teu nome" />
+            </label>
+            <label>
+              Idade:
+              <input id="age-input" type="text" placeholder="a tua idade" />
+            </label>
+            <button type="submit">Enviar</button>
+          </form>
+          <p id="greeting"></p>
+        </li>
+
+        <li>Estás nesta página há <span id="seconds">0</span> segundos.</li>
+      </ol>
+
+      <section>
+        <h2>Select flex</h2>
+        <label>
+          Direção:
+          <select id="direction-select">
+            <option value="row">row</option>
+            <option value="row-reverse">row-reverse</option>
+            <option value="column">column</option>
+            <option value="column-reverse">column-reverse</option>
+          </select>
+        </label>
+
+        <div class="ball-container">
+          <div class="ball"></div>
+          <div class="ball"></div>
+          <div class="ball"></div>
+          <div class="ball"></div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // 1. Passa por aqui: muda o texto e a cor quando o rato passa por cima
+      function hoverIn() {
+        const text = document.querySelector("#hover-text");
+        text.textContent = "Obrigado por passares!";
+        text.style.color = "darkorange";
+      }
+
+      // volta ao texto original quando o rato sai
+      function hoverOut() {
+        const text = document.querySelector("#hover-text");
+        text.textContent = "Passa por aqui!";
+        text.style.color = "#222";
+      }
+
+      // 2. Dá-me uma cor: cada botão guarda a sua cor no atributo data-color
+      document.querySelectorAll("button.color").forEach((button) => {
+        button.addEventListener("click", () => {
+          document.querySelector("#paint-text").style.color =
+            button.dataset.color;
+        });
+      });
+
+      // 3. Experimenta escrever: a cada tecla vê a cor atual e passa à seguinte
+      function changeInputColor() {
+        const input = document.querySelector("#typing-input");
+
+        if (input.style.backgroundColor === "lightblue") {
+          input.style.backgroundColor = "lightpink";
+        } else if (input.style.backgroundColor === "lightpink") {
+          input.style.backgroundColor = "lightgreen";
+        } else if (input.style.backgroundColor === "lightgreen") {
+          input.style.backgroundColor = "khaki";
+        } else {
+          // sem cor ou depois da última, volta à primeira
+          input.style.backgroundColor = "lightblue";
+        }
+      }
+
+      // 4. Cor do fundo: this é o select que mudou, this.value é a cor escolhida
+      // (function normal e não arrow function, porque na arrow o this não é o select)
+      document
+        .querySelector("#bg-select")
+        .addEventListener("change", function () {
+          document.querySelector("body").style.backgroundColor = this.value;
+        });
+
+      // 5. Contador com localStorage (o valor não se perde ao recarregar)
+
+      // variáveis
+      if (!localStorage.getItem("counter")) {
+        localStorage.setItem("counter", 0);
+      }
+      let counter = Number(localStorage.getItem("counter")); // vem como string
+      const counterText = document.querySelector("#counter");
+
+      // event handlers
+      const updateCounter = () => {
+        counterText.textContent = counter;
+        localStorage.setItem("counter", counter);
+      };
+
+      const increment = () => {
+        counter++;
+        updateCounter();
+      };
+
+      const decrement = () => {
+        counter--;
+        updateCounter();
+      };
+
+      const reset = () => {
+        counter = 0;
+        updateCounter();
+      };
+
+      // event listeners
+      document.querySelector("#increment").addEventListener("click", increment);
+      document.querySelector("#decrement").addEventListener("click", decrement);
+      document.querySelector("#reset").addEventListener("click", reset);
+
+      // ao carregar a página, mostra o valor guardado
+      updateCounter();
+
+      // 6. Formulário: mostra a saudação no HTML sem recarregar a página
+      document.querySelector("#greeting-form").onsubmit = (e) => {
+        e.preventDefault(); // para não recarregar a página
+        const name = document.querySelector("#name-input").value;
+        const age = document.querySelector("#age-input").value;
+        document.querySelector("#greeting").textContent =
+          `Olá, o ${name} tem ${age}!`;
+      };
+
+      // 7. Contador automático: soma 1 a cada segundo, sem o utilizador fazer nada
+      let seconds = 0;
+
+      function countSeconds() {
+        seconds++;
+        document.querySelector("#seconds").textContent = seconds;
+      }
+
+      setInterval(countSeconds, 1000);
+
+      // Select flex: o valor escolhido muda o flex-direction do contentor
+      document
+        .querySelector("#direction-select")
+        .addEventListener("change", function () {
+          document.querySelector(".ball-container").style.flexDirection =
+            this.value;
+        });
+    </script>
+  </body>
+</html>
