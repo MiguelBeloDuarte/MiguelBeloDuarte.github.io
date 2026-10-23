@@ -28,7 +28,6 @@ function guardaCarta() {
         atualizaLista(colecao, nodeUlColecao);
         nodeSpanTotal.textContent = colecao.length;
     }
-
 }
 
 function atualizaLista(lista, nodeUl) {

@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px;
+    background-color: rgb(1, 71, 7);
+}
+
+header h1 {
+    color: white;
+}
+
+header ul {
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header a {
+    color:rgb(223, 223, 223);
+    text-decoration: none;
+}
+
+#produtos {
+    padding: 32px;
+    background: lightgrey;
+    text-align: center;
+}
+
+#produtos h2 {
+    text-align: center;
+}
+
+#lista-produtos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 48px;
+}
+
+article {
+    width: 280px;
+    padding: 24px;
+    background-color: white;
+}
+
+article img {
+    width: 150px;
+}
+
+.description {
+    padding: 16px;
+    background-color: rgb(230, 230, 230);
+    font-style: italic;
+    font-size: 14px;
+    text-align: left;
+}
+
+footer {
+    padding: 16px;
+    text-align: center;
+}
