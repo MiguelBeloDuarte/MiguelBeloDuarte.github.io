@@ -1,5 +1,5 @@
 body {
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: Poppins, Arial, sans-serif;
   background-color: #f4f4f8;
   color: #222;
   margin: 0;
@@ -56,11 +56,6 @@ button:hover {
   border: 1px solid coral;
 }
 
-#counter {
-  margin: 0 6px;
-}
-
-/* número do contador afastado dos botões */
 #counter {
   margin: 0 4px;
   font-weight: bold;

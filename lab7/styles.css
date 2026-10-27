@@ -7,7 +7,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 32px;
-  background-color: rgb(1, 71, 7);
+  background-color: rgb(1 71 7);
 }
 
 header h1 {
@@ -23,7 +23,7 @@ header ul {
 }
 
 header a {
-  color: rgb(223, 223, 223);
+  color: rgb(223 223 223);
   text-decoration: none;
 }
 
@@ -39,12 +39,12 @@ header a {
 
 #cesto {
   padding: 32px;
-  background-color: rgb(1, 71, 7);
+  background-color: rgb(1 71 7);
 }
 
 #cesto h2 {
   text-align: center;
-  color: rgb(200, 235, 200);
+  color: rgb(200 235 200);
 }
 
 .lista {
@@ -81,7 +81,7 @@ article button {
 
 .description {
   padding: 16px;
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(230 230 230);
   font-style: italic;
   font-size: 14px;
   text-align: left;
