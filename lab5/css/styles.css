@@ -35,7 +35,7 @@ li:nth-child(even) {
 button,
 input,
 select {
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: Poppins, Arial, sans-serif;
   font-size: 15px;
   padding: 6px 12px;
   margin: 4px 8px;
