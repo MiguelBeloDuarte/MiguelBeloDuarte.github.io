@@ -1,3 +1,4 @@
+/* global produtos -- lista definida em produtos.js */
 // A. Estado e variáveis com referência de elementos do DOM
 const storageKey = "produtos-selecionados";
 

@@ -1,17 +1,17 @@
 main {
-    background-color: aliceblue;
-    margin: 20px;
-    padding: 10px 20px;
-    border-radius: 10px;
+  background-color: aliceblue;
+  margin: 20px;
+  padding: 10px 20px;
+  border-radius: 10px;
 }
 
 section {
-    border: 1px solid grey;
-    padding: 10px 20px;
-    margin: 20px;
+  border: 1px solid grey;
+  padding: 10px 20px;
+  margin: 20px;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }

@@ -1,101 +1,101 @@
 body {
-    margin: 0;
+  margin: 0;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 32px;
-    background-color: rgb(1, 71, 7);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px;
+  background-color: rgb(1, 71, 7);
 }
 
 header h1 {
-    color: white;
+  color: white;
 }
 
 header ul {
-    display: flex;
-    gap: 24px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 header a {
-    color:rgb(223, 223, 223);
-    text-decoration: none;
+  color: rgb(223, 223, 223);
+  text-decoration: none;
 }
 
 #produtos {
-    padding: 32px;
-    background: lightgrey;
-    text-align: center;
+  padding: 32px;
+  background: lightgrey;
+  text-align: center;
 }
 
 #produtos h2 {
-    text-align: center;
+  text-align: center;
 }
 
 #cesto {
-    padding: 32px;
-    background-color: rgb(1, 71, 7);
+  padding: 32px;
+  background-color: rgb(1, 71, 7);
 }
 
 #cesto h2 {
-    text-align: center;
-    color: rgb(200, 235, 200)
+  text-align: center;
+  color: rgb(200, 235, 200);
 }
 
 .lista {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 48px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 48px;
 }
 
 article {
-    display: flex;
-    flex-direction: column;
-    width: 280px;
-    padding: 24px;
-    background-color: white;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  padding: 24px;
+  background-color: white;
+  text-align: center;
 }
 
 article img {
-    width: 150px;
-    margin: 0 auto;
+  width: 150px;
+  margin: 0 auto;
 }
 
 article button {
-    margin: auto auto 0 auto;
-    padding: 4px 12px;
-    cursor: pointer;
+  margin: auto auto 0;
+  padding: 4px 12px;
+  cursor: pointer;
 }
 
 #cesto article {
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 20%);
 }
 
 .description {
-    padding: 16px;
-    background-color: rgb(230, 230, 230);
-    font-style: italic;
-    font-size: 14px;
-    text-align: left;
+  padding: 16px;
+  background-color: rgb(230, 230, 230);
+  font-style: italic;
+  font-size: 14px;
+  text-align: left;
 }
 
 #custo-total {
-    margin-top: 48px;
-    text-align: center;
-    color: white;
-    font-size: 28px;
-    font-weight: bold;
+  margin-top: 48px;
+  text-align: center;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 footer {
-    padding: 16px;
-    text-align: center;
+  padding: 16px;
+  text-align: center;
 }
